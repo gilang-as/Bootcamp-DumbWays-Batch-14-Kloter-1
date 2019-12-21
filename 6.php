@@ -1,3 +1,17 @@
+<?php
+$mysqli = new mysqli("localhost","root","","count");
+
+if ($mysqli -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+}
+
+if(isset($_POST["id"])){
+    $query='UPDATE tb_caleg SET earned_vote = earned_vote + 1 WHERE id = "'.$_POST['id'].'"';
+    mysqli_query($mysqli,$query);
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -6,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Pricing example · Bootstrap</title>
+    <title>VOTE</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/pricing/">
 
@@ -44,16 +58,20 @@
     </div>
 
     <div class="container">
-
-        <form class="card-deck mb-3 text-center">
+        <?php
+        $caleg = mysqli_query($mysqli, "SELECT * from tb_caleg");
+        foreach ($caleg as $row){
+        ?>
+        <form class="card-deck mb-3 text-center" method="POST">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Free</h4>
+                    <h4 class="my-0 font-weight-normal"><?= $row["name"];?></h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title"><small class="text-muted"> Memperoleh Suara : </small> 0 </h1>
+                    <h1 class="card-title pricing-card-title"><small class="text-muted"> Memperoleh Suara : </small> <?= $row["earned_vote"];?> </h1>
                 </div>
             </div>
+            <input type="hidden" name="id" value="<?= $row["id"];?>">
             <button type="submit" class="col-md-12 card mb-4 shadow-sm btn btn-lg btn-block btn-outline-primary">
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h3>TAMBAH</h3>
@@ -61,6 +79,9 @@
             </div>
             </button>
         </form>
+        <?php 
+        }
+        ?>
         
     </div>
 
