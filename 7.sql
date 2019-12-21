@@ -1,0 +1,1 @@
+SELECT customers.*, orders.order_placed_date FROM orders RIGHT JOIN customers ON customers.id = orders.customer_id WHERE (orders.order_placed_date BETWEEN '2019-01-01' AND '2019-02-01') ORDER BY orders.order_placed_date ASC;
