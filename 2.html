@@ -57,10 +57,10 @@
     </div>
     <script>
         function ValidateEmail(inputText) {
-            var usernameformat1 = /^[a-zA-Z0-9]+$/;
-            var usernameformat2 = /^[a-z|A-Z|0-9]+$/;
+            //var usernameformat1 = /^[a-zA-Z0-9]+$/;
+            //var usernameformat2 = /^[a-z|A-Z|0-9]+$/;
             var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
+            /*
             if (inputText.value.length < 6) {
                 alert("Panjang minimal 6 karakter");
                 return false;
@@ -69,7 +69,8 @@
                 alert("Panjang maksimal 12 karakter");
                 return false;
             }
-            if (inputText.value.match(usernameformat2)) {
+            */
+            if (inputText.value.match(mailformat)) {
                 document.form1.text1.focus();
                 return true;
             } else {
