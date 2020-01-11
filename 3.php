@@ -9,13 +9,12 @@ function cek($no){
     return 1; 
 } 
 
-function bilang($no1,$no2){
-    $total=$no1*$no2;
+function bilang($total){
     $a=1;
     $b=0;
     while(true){
         if(cek($a)==1){
-            echo $a.", ";
+            $prima[]=$a.", ";
             $b++;
         }
         if($b==$total){
@@ -23,7 +22,32 @@ function bilang($no1,$no2){
         }
         $a++;
     }
+    return $prima;
+}
+//print_r(bilang(50));
+function total($total){
+    $z=0;
+    for($a=1;$a<=$total;$a++){
+        for($b=1;$b<=$a;$b++){
+            $z++;
+        }
+    } 
+    return $z;
 }
 
-bilang(3,4);
- ?>
+function cetak($total){
+    $totdata = total($total);
+    $data = bilang($totdata);
+    $z=0;
+    for($a=1;$a<=$total;$a++){
+        for($b=1;$b<=$a;$b++){
+            echo $data[$z]."  ";
+            $z++;
+        }
+        echo "<br>";
+    }
+}
+
+cetak(8);
+
+?>
