@@ -44,7 +44,7 @@ function cetak($total){
             echo $data[$z]."  ";
             $z++;
         }
-        echo "<br>";
+       echo "<br>";
     }
 }
 

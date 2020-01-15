@@ -31,7 +31,7 @@ function sub2($a){
     return urutno(sub1($a));
 }
 
-
+echo "<pre>";
 $data=[['T','S','Q','P','R'],['W','U','V']];
 $datalain = [['M','L','O','N'],['T','S','Q','P','R'],['W','U','V']];
 print_r(sub2($data));
